@@ -9,7 +9,7 @@ import {getMetricMetaInfo, timeToString, getDailyReminderValue} from '../utils/h
 import {submitEntry, removeEntry} from '../utils/api';
 import {white, purple} from '../utils/colors';
 
-import * as entriesActions from '../actions';
+import {addEntry} from '../actions';
 
 import UdaciSlider from './UdaciSlider';
 import UdaciSteppers from './UdaciSteppers';
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
         marginLeft: 30,
         marginRight: 30,
     },
-})
+});
 
 function mapStateToProps(state) {
     const key = timeToString();
@@ -205,7 +205,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    ...entriesActions
+    addEntry
 };
 
 export default connect(
