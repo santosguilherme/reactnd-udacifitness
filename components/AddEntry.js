@@ -6,6 +6,7 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 
 import {getMetricMetaInfo, timeToString} from '../utils/helpers';
+import {submitEntry, removeEntry} from '../utils/api';
 
 import UdaciSlider from './UdaciSlider';
 import UdaciSteppers from './UdaciSteppers';
@@ -70,19 +71,19 @@ export default class AddEntry extends Component {
 
         // Navigate to home
 
-        // Save to "DB"
+        submitEntry({key, entry});
 
         // Clear local notification
     };
 
     handleReset = () => {
-        const key = timeToString()
+        const key = timeToString();
 
         // Update Redux
 
         // Route to Home
 
-        // Update "DB"
+        removeEntry(key);
     };
 
     render() {
