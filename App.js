@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {View, Platform, StatusBar} from 'react-native';
-import {TabNavigator} from 'react-navigation';
+import {TabNavigator, StackNavigator} from 'react-navigation';
 
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
@@ -13,6 +13,7 @@ import {purple, white} from './utils/colors';
 
 import History from './components/History';
 import AddEntry from './components/AddEntry';
+import EntryDetail from './components/EntryDetail';
 
 import reducers from './reducers';
 
@@ -64,6 +65,20 @@ const Tabs = TabNavigator({
     }
 });
 
+const MainNavigator = StackNavigator({
+    Home: {
+        screen: Tabs,
+    },
+    EntryDetail: {
+        screen: EntryDetail,
+        navigationOptions: {
+            headerTintColor: white,
+            headerStyle: {
+                backgroundColor: purple,
+            }
+        }
+    }
+});
 
 export default class App extends React.Component {
     render() {
@@ -74,7 +89,7 @@ export default class App extends React.Component {
                         backgroundColor={purple}
                         barStyle="light-content"
                     />
-                    <Tabs/>
+                    <MainNavigator/>
                 </View>
             </Provider>
         );
