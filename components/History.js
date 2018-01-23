@@ -12,7 +12,8 @@ import {timeToString, getDailyReminderValue} from '../utils/helpers';
 import {fetchCalendarResults} from '../utils/api';
 import {white} from '../utils/colors';
 
-import DateHeader from './DateHeader'
+import DateHeader from './DateHeader';
+import MetricCard from './MetricCard';
 
 
 class History extends Component {
@@ -53,7 +54,7 @@ class History extends Component {
                             {entryId: key}
                         )}
                     >
-                        <Text>{JSON.stringify(metrics)}</Text>
+                        <MetricCard date={formattedDate} metrics={metrics}/>
                     </TouchableOpacity>
                 }
             </View>
