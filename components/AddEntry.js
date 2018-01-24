@@ -6,7 +6,13 @@ import {NavigationActions} from 'react-navigation';
 
 import {Ionicons} from '@expo/vector-icons';
 
-import {getMetricMetaInfo, timeToString, getDailyReminderValue} from '../utils/helpers';
+import {
+    getMetricMetaInfo,
+    timeToString,
+    getDailyReminderValue,
+    clearLocalNotification,
+    setLocalNotification
+} from '../utils/helpers';
 import {submitEntry, removeEntry} from '../utils/api';
 import {white, purple} from '../utils/colors';
 
@@ -81,7 +87,8 @@ class AddEntry extends Component {
 
         submitEntry({key, entry});
 
-        // Clear local notification
+        clearLocalNotification()
+            .then(setLocalNotification);
     };
 
     handleReset = () => {

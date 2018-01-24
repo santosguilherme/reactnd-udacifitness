@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import {View, Platform, StatusBar} from 'react-native';
 import {TabNavigator, StackNavigator} from 'react-navigation';
@@ -10,6 +10,7 @@ import {Constants} from 'expo';
 import {FontAwesome, Ionicons} from '@expo/vector-icons';
 
 import {purple, white} from './utils/colors';
+import {setLocalNotification} from './utils/helpers';
 
 import History from './components/History';
 import AddEntry from './components/AddEntry';
@@ -88,7 +89,11 @@ const MainNavigator = StackNavigator({
     }
 });
 
-export default class App extends React.Component {
+export default class App extends Component {
+    componentDidMount() {
+        setLocalNotification();
+    }
+
     render() {
         return (
             <Provider store={createStore(reducers)}>
